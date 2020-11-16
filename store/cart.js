@@ -11,18 +11,20 @@ export const getters = {
     return state.items.length || 0
   },
   cartProducts: (state, getters, rootState) => {
-    return state.items.map((id) => {
-      const product = rootState.products.all.find(product => product.sku === id)
-      return {
-        title: product.name.tr,
-        price: product.variations.market_price,
-      }
-    })
+    return host.getProductsBySku(state.items)
+    // return state.items.map((id) => {
+    //   const product = rootState.products.all.find(product => product.sku === id)
+    //   return {
+    //     title: product.name.tr,
+    //     price: product.variations.market_price,
+    //     sku: product.sku
+    //   }
+    // })
   },
 
   cartTotalPrice: (state, getters) => {
     return getters.cartProducts.reduce((total, product) => {
-      return total + product.price
+      return total + product.variations.market_price
     }, 0)
   }
 }
@@ -34,7 +36,9 @@ export const actions = {
     if (!cartItem) {
       commit('pushProductToCart', { id: sku })
     }
-
+  },
+  removeProductFromCart({ state, commit }, sku) {
+    commit('removeProductFromCart', sku)
   }
 }
 
@@ -43,5 +47,8 @@ export const mutations = {
   pushProductToCart(state, { id }) {
     state.items.push(id)
   },
+  removeProductFromCart(state, sku) {
+    state.items = state.items.filter(id => id !== sku);
+  }
 }
 

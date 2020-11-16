@@ -1907,4 +1907,9 @@ function getPage(num: number) {
     let last = num * 10;
     return products.slice(last - 10, last)
 }
-export { total, getPage, products }
+function getProductsBySku(skus: Array<String>) {
+    return skus.map((id) => {
+        return products.find(product => product.sku === id)
+    })
+}
+export { total, getPage, products, getProductsBySku }

@@ -41,11 +41,25 @@ export default {
     '@nuxtjs/pwa',
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
+    // https://github.com/nuxt-community/proxy-module
+    '@nuxtjs/proxy',
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
-  axios: {},
+  axios: {
+    proxy: true,
+    headers: {
+      common: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      },
+    }
+  },
+  // proxy module configuration () https://github.com/nuxt-community/proxy-module
+  proxy: {
+    '/api/': 'https://mp.knawat.io/api',
 
+  },
   // Content module configuration (https://go.nuxtjs.dev/config-content)
   content: {},
 

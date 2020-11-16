@@ -56,10 +56,9 @@ export default {
     }
   },
   // proxy module configuration () https://github.com/nuxt-community/proxy-module
-  proxy: {
-    '/api/': 'https://mp.knawat.io/api',
-
-  },
+  proxy: [
+    'https://mp.knawat.io/api/',
+  ],
   // Content module configuration (https://go.nuxtjs.dev/config-content)
   content: {},
 

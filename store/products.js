@@ -1,6 +1,7 @@
 // initial state
 export const state = () => ({
-    all: []
+    all: [],
+    count: 0
 })
 
 
@@ -14,11 +15,12 @@ export const actions = {
             "Bearer"
         );
         try {
-            const products = await this.$axios.$get(
-                `/api/catalog/products?page=${1}&hideOutOfStock=${1}`
+            const resp = await this.$axios.$get(
+                `api/catalog/products?page=${1}&hideOutOfStock=${1}`
             );
-            console.log(products)
-            commit('setProducts', products)
+            console.log(resp.products)
+            commit('setProducts', resp.products)
+            commit('setCount', resp.total)
         } catch (error) {
             console.error(error)
         }
@@ -30,12 +32,10 @@ export const actions = {
 export const mutations = {
     setProducts(state, products) {
         state.all = products
-        console.log("product set finished")
+    },
+    setCount(state, count) {
+        state.count = count
     },
 
-    decrementProductInventory(state, { id }) {
-        const product = state.all.find(product => product.id === id)
-        product.inventory--
-    }
 }
 

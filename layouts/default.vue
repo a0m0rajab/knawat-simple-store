@@ -12,9 +12,10 @@
           left
           bottom
           to="/cartPage"
-        >
-        </v-badge>
-        <v-icon large>mdi-cart-outline</v-icon>
+        />
+        <v-icon large>
+          mdi-cart-outline
+        </v-icon>
       </v-btn>
     </v-app-bar>
     <v-main>
@@ -29,18 +30,18 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters } from 'vuex'
 
 export default {
-  data() {
+  data () {
     return {
-      title: "Knawat Demo Store",
-    };
+      title: 'Knawat Demo Store'
+    }
   },
   computed: {
     ...mapGetters({
-      productAmount: "cart/productAmount",
-    }),
-  },
-};
+      productAmount: 'cart/productAmount'
+    })
+  }
+}
 </script>

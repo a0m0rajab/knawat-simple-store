@@ -42,7 +42,7 @@ export default {
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
     // https://github.com/nuxt-community/proxy-module
-    '@nuxtjs/proxy',
+    '@nuxtjs/proxy'
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
@@ -50,14 +50,14 @@ export default {
     proxy: true,
     headers: {
       common: {
-        'Accept': 'application/json, text/plain, */*',
+        Accept: 'application/json, text/plain, */*',
         'Content-Type': 'application/json'
-      },
+      }
     }
   },
   // proxy module configuration () https://github.com/nuxt-community/proxy-module
   proxy: [
-    'https://mp.knawat.io/api/',
+    'https://mp.knawat.io/api/'
   ],
   // Content module configuration (https://go.nuxtjs.dev/config-content)
   content: {},

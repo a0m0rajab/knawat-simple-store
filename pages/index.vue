@@ -9,55 +9,45 @@
       />
     </v-col>
     <div class="text-center">
-      <v-pagination
-        v-model="page"
-        :length="count / 10"
-        :total-visible="9"
-      ></v-pagination>
+      <v-pagination v-model="page" :length="count / 10" :total-visible="9" />
     </div>
   </v-row>
 </template>
 
-
-
 <script>
-import Logo from "~/components/Logo.vue";
-
-import product from "~/components/product.vue";
-import VuetifyLogo from "~/components/VuetifyLogo.vue";
-import { mapMutations, mapState, mapActions, mapGetters } from "vuex";
+import { mapState, mapActions } from 'vuex'
+import product from '~/components/product.vue'
 
 export default {
   components: {
     Logo,
     VuetifyLogo,
-    product,
+    product
   },
-  data() {
+  data () {
     return {
-      page: 1,
-    };
+      page: 1
+    }
   },
-  watch: {
-    page: function () {
-      this.$store.dispatch("products/getAllProducts", this.page);
-    },
-  },
-  created() {
-    console.log("created");
-    this.$store.dispatch("products/getAllProducts", this.page);
+  created () {
+    this.$store.dispatch('products/getAllProducts', this.page)
   },
   computed: {
     ...mapState({
-      products: (state) => state.products.all,
-      count: (state) => state.products.count,
-    }),
+      products: state => state.products.all,
+      count: state => state.products.count
+    })
+  },
+  watch: {
+    page () {
+      this.$store.dispatch('products/getAllProducts', this.page)
+    }
   },
   methods: {
-    ...mapActions("cart", ["addProductToCart"]),
-    imageName(link, name) {
-      return `${link}/${name}/200`;
-    },
-  },
-};
+    ...mapActions('cart', ['addProductToCart']),
+    imageName (link, name) {
+      return `${link}/${name}/200`
+    }
+  }
+}
 </script>

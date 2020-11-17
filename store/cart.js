@@ -2,7 +2,7 @@ import * as host from '~/test/productsList'
 
 // initial state
 export const state = () => ({
-  items: [],
+  items: []
 })
 
 // getters
@@ -31,24 +31,23 @@ export const getters = {
 
 // actions
 export const actions = {
-  addProductToCart({ state, commit }, sku) {
+  addProductToCart ({ state, commit }, sku) {
     const cartItem = state.items.find(item => item === sku)
     if (!cartItem) {
       commit('pushProductToCart', { id: sku })
     }
   },
-  removeProductFromCart({ state, commit }, sku) {
+  removeProductFromCart ({ state, commit }, sku) {
     commit('removeProductFromCart', sku)
   }
 }
 
 // mutations
 export const mutations = {
-  pushProductToCart(state, { id }) {
+  pushProductToCart (state, { id }) {
     state.items.push(id)
   },
-  removeProductFromCart(state, sku) {
-    state.items = state.items.filter(id => id !== sku);
+  removeProductFromCart (state, sku) {
+    state.items = state.items.filter(id => id !== sku)
   }
 }
-

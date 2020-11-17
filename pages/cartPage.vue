@@ -1,17 +1,16 @@
 <template>
   <div>
     <v-data-table
+      v-if="products.length !== 0"
       hide-default-header
       hide-default-footer
       :headers="headers"
       :items="products"
       :items-per-page="products.length"
       class="elevation-1"
-      v-if="products.length !== 0"
     >
       <template v-slot:item.image="{ item }">
-        <v-img max-width="200" :src="imageName(item.images[0], item.name.tr)">
-        </v-img>
+        <v-img max-width="200" :src="imageName(item.images[0], item.name.tr)" />
       </template>
       <template v-slot:item.title="{ item }">
         {{ item.name.tr }}
@@ -23,8 +22,8 @@
         <v-icon
           small
           class="mr-2"
-          @click="removeProductFromCart(item.sku)"
           color="red"
+          @click="removeProductFromCart(item.sku)"
         >
           mdi-delete
         </v-icon>
@@ -38,47 +37,49 @@
     >
       Total Price {{ total }}
     </v-chip>
-    <p v-else>you can buy more ;)</p>
+    <p v-else>
+      you can buy more ;)
+    </p>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapState, mapActions } from "vuex";
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   data: () => ({
     headers: [
       {
-        text: "image",
-        align: "start",
-        value: "image",
+        text: 'image',
+        align: 'start',
+        value: 'image'
       },
       {
-        text: "title",
-        value: "title",
+        text: 'title',
+        value: 'title'
       },
       {
-        text: "price",
-        value: "price",
+        text: 'price',
+        value: 'price'
       },
       {
-        text: "actions",
-        align: "end",
-        value: "actions",
-      },
-    ],
+        text: 'actions',
+        align: 'end',
+        value: 'actions'
+      }
+    ]
   }),
   computed: {
-    ...mapGetters("cart", {
-      products: "cartProducts",
-      total: "cartTotalPrice",
-    }),
+    ...mapGetters('cart', {
+      products: 'cartProducts',
+      total: 'cartTotalPrice'
+    })
   },
   methods: {
-    ...mapActions("cart", ["removeProductFromCart"]),
-    imageName(link, name) {
-      return `${link}/${name}/200`;
-    },
-  },
-};
+    ...mapActions('cart', ['removeProductFromCart']),
+    imageName (link, name) {
+      return `${link}/${name}/200`
+    }
+  }
+}
 </script>

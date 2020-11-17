@@ -31,23 +31,23 @@ export const getters = {
 
 // actions
 export const actions = {
-  addProductToCart ({ state, commit }, sku) {
+  addProductToCart({ state, commit }, sku) {
     const cartItem = state.items.find(item => item === sku)
     if (!cartItem) {
       commit('pushProductToCart', { id: sku })
     }
   },
-  removeProductFromCart ({ state, commit }, sku) {
-    commit('removeProductFromCart', sku)
+  removeProductFromCart({ state, commit }, sku) {
+    commit('filterProductFromCart', sku)
   }
 }
 
 // mutations
 export const mutations = {
-  pushProductToCart (state, { id }) {
+  pushProductToCart(state, { id }) {
     state.items.push(id)
   },
-  removeProductFromCart (state, sku) {
+  filterProductFromCart(state, sku) {
     state.items = state.items.filter(id => id !== sku)
   }
 }

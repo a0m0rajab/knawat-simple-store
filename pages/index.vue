@@ -20,8 +20,6 @@ import product from '~/components/product.vue'
 
 export default {
   components: {
-    Logo,
-    VuetifyLogo,
     product
   },
   data () {

@@ -28,7 +28,7 @@
     "@nuxtjs/axios": "^5.12.2",
     "@nuxtjs/proxy": "^2.0.1",
     "@nuxtjs/pwa": "^3.0.2",
-    "core-js": "^3.6.5",
+    "core-js": "^3.11.2",
     "nuxt": "^2.14.6"
   },
   "devDependencies": {
@@ -48,7 +48,7 @@
     "jest": "^26.5.0",
     "lint-staged": "^10.4.0",
     "push-dir": "^0.4.1",
-    "ts-jest": "^26.4.1",
+    "ts-jest": "^26.5.5",
     "vue-jest": "^3.0.4"
   }
 }
